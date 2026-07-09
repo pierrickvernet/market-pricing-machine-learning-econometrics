@@ -1,18 +1,18 @@
 # Modélisation et Prédiction des Prix de Marché : Approches Économétriques et Apprentissage Statistique
 
-Ce projet a été réalisé dans le cadre de mon Master 1 IREF (Ingénierie Financière, Recherche et Économétrie) pour le module de Big Data et Économétrie. L'objectif principal est d'analyser un jeu de données financières de 25 000 observations et d'évaluer de manière comparative la pertinence de modèles économétriques linéaires classiques et d'algorithmes d'apprentissage statistique (Machine Learning) pour prédire la variable cible `market_price`.
+Ce projet a été réalisé dans le cadre de mon Master 1 IREF (Ingénierie Financière, Recherche et Économétrie) pour le module d'Économétrie des big data. L'objectif principal est d'analyser un jeu de données financières de 25 000 observations et d'évaluer de manière comparative la pertinence de modèles économétriques linéaires classiques et d'algorithmes de Machine Learning pour prédire la variable cible `market_price`.
 
 ## 📌 Structure de la Démarche
 
-Le projet est structuré au sein d'un unique notebook Jupyter (`pricing.ipynb`) découpé en plusieurs phases méthodologiques :
+Le projet est structuré au sein d'un unique notebook Jupyter `pricing.ipynb` découpé en plusieurs phases méthodologiques :
 
-1. **Analyse Descriptive :** Exploration de la structure des données, visualisation de la distribution de la variable dépendante (mise en évidence d'une asymétrie à droite) et analyse quantitative des données manquantes.
+1. **Analyse Descriptive :** Exploration de la structure des données, visualisation de la distribution de la variable dépendante et analyse quantitative des données manquantes.
 2. **Préparation des Données :** Évaluation des stratégies de traitement des valeurs manquantes (exclusion par *Listwise Deletion* rejetée car éliminant 92 % des lignes, choix final d'une imputation par la médiane pour les variables numériques et le mode pour les qualitatives) et encodage des variables catégorielles via la création de variables muettes (*Dummification*).
 3. **Modélisation Économétrique :** Estimation d'une régression linéaire par les Moindres Carrés Ordinaires (OLS) et interprétation économique des coefficients (impact majeur du risque, de la rentabilité opérationnelle, et primes sectorielles/notations).
 4. **Sélection de Variables :** Implémentation et comparaison d'algorithmes de réduction de dimensionnalité pour limiter la multicolinéarité et améliorer la parcimonie :
-   * Sélection ascendante (*Forward Selection*)
-   * Sélection descendante (*Backward Selection*)
-   * Régularisation pénalisée (*LassoCV*)
+   * Forward Selection
+   * Backward Selection
+   * Lasso 
 5. **Apprentissage Statistique (Machine Learning) :** Entraînement et optimisation d'hyperparamètres par validation croisée à 10 blocs (*10-fold Cross-Validation*) :
    * Algorithme des K plus proches voisins (*KNN Regressor*)
    * Arbre de décision de régression (*Decision Tree*)
