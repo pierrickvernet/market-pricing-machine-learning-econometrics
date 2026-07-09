@@ -4,7 +4,7 @@ Ce projet a été réalisé dans le cadre de mon Master 1 IREF (Ingénierie Fina
 
 ## 📌 Structure de la Démarche
 
-Le projet est structuré au sein d'un unique notebook Jupyter (`DM2_Vernet_Ricci.ipynb`) découpé en plusieurs phases méthodologiques :
+Le projet est structuré au sein d'un unique notebook Jupyter (`pricing.ipynb`) découpé en plusieurs phases méthodologiques :
 
 1. **Analyse Descriptive :** Exploration de la structure des données, visualisation de la distribution de la variable dépendante (mise en évidence d'une asymétrie à droite) et analyse quantitative des données manquantes.
 2. **Préparation des Données :** Évaluation des stratégies de traitement des valeurs manquantes (exclusion par *Listwise Deletion* rejetée car éliminant 92 % des lignes, choix final d'une imputation par la médiane pour les variables numériques et le mode pour les qualitatives) et encodage des variables catégorielles via la création de variables muettes (*Dummification*).
