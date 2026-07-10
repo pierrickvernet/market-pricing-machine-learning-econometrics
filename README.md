@@ -1,6 +1,6 @@
 # Modélisation et Prédiction des Prix de Marché : Approches Économétriques et Apprentissage Statistique
 
-Ce projet a été réalisé dans le cadre de mon Master 1 IREF (Ingénierie Financière, Recherche et Économétrie) pour le module d'Économétrie des big data. L'objectif principal est d'analyser un jeu de données financières de 25 000 observations et d'évaluer de manière comparative la pertinence de modèles économétriques linéaires classiques et d'algorithmes de Machine Learning pour prédire la variable cible `market_price`.
+Ce projet a été réalisé dans le cadre de mon Master 1 IREF pour le module d'Économétrie des big data. L'objectif principal est d'analyser un jeu de données financières de 25 000 observations et d'évaluer de manière comparative la pertinence de modèles économétriques linéaires classiques et d'algorithmes de Machine Learning pour prédire la variable cible `market_price`.
 
 ## 📌 Structure de la Démarche
 
