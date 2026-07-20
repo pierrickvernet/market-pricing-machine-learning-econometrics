@@ -56,26 +56,3 @@ Le modèle linéaire retenu est la régression OLS associée à une sélection p
 │   └── pricing.ipynb                                # Notebook Jupyter comprenant l'intégralité du pipeline
 └── README.md                                        # Documentation du projet
 ```
-
-## 6. INSTALLATION ET REPRODUCTION
-- Prérequis : Python 3.8 ou supérieur installé sur votre système.
-- Étape 1 : Cloner le dépôt GitHub
-```bash
-git clone [https://github.com/votre-utilisateur/projet-econometrie-pricing.git](https://github.com/votre-utilisateur/projet-econometrie-pricing.git)
-cd projet-econometrie-pricing
-```
-- Étape 2 : Créer et activer un environnement virtuel
-```bash
-python -m venv venv
-source venv/bin/activate  # Sur Linux/macOS
-# venv\Scripts\activate   # Sur Windows
-```
-- Étape 3 : Installer les dépendances requises
-```bash
-pip install -r requirements.txt
-```
-- Étape 4 : Exécuter l'analyse
-Lancer Jupyter Notebook ou Jupyter Lab pour exécuter le traitement complet :
-```bash
-jupyter lab notebooks/pricing.ipynb
-```
