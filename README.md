@@ -8,6 +8,8 @@ L'objectif de cette étude est de modéliser et de prédire la variable financi�
 ### Cas d'usage 
 Évaluation d'actifs, tarification financière et aide à la décision quantitativiste à travers la recherche d'un compromis optimal entre puissance prédictive, parcimonie et explicabilité des variables explicatives.
 
+---
+
 ## 2. SOURCES ET DONNÉES
 ### Périmètre 
 Dataset financier comprenant 25 000 observations.
@@ -15,6 +17,8 @@ Dataset financier comprenant 25 000 observations.
 `market_price` (variable continue représentant la valorisation financière ou le prix de marché).
 ### Variables explicatives
 Ensemble de variables financières numériques et catégorielles reflétant le niveau de risque, la rentabilité opérationnelle, le secteur d'activité et la notation financière (credit rating).
+
+---
 
 ## 3. MÉTHODOLOGIE ET DÉTAILS TECHNIQUES
 ### Traitement des données et Feature Engineering :
@@ -36,6 +40,8 @@ Ensemble de variables financières numériques et catégorielles reflétant le n
   - Machine Learning & Preprocessing : `scikit-learn` (`train_test_split`, `StandardScaler`, `SimpleImputer`, `GridSearchCV`, `LassoCV`, `KNeighborsRegressor`, `DecisionTreeRegressor`)
   - Visualisation : `matplotlib`, `seaborn`
 
+---
+
 ## 4. CONCLUSION ET RÉSULTATS CLÉS
 ### Évaluation des performances sur l'échantillon de test (Métriques : $R^2$, RMSE, MAE) :
   - Régression Linéaire (OLS post-sélection Backward) : $R^2 \approx 0,71$. Le modèle conserve 16 variables explicatives clés, élimine la multicolinéarité (baisse marquée du *Condition Number*) et offre une interprétabilité économique intégrale des coefficients.
@@ -47,6 +53,8 @@ Le modèle linéaire retenu est la régression OLS associée à une sélection p
   - Tester des architectures d'apprentissage d'ensemble (*Random Forest*, *XGBoost*, *LightGBM*) pour vérifier la présence d'interactions complexes non capturées par l'arbre simple.
   - Approfondir le traitement de la dimensionnalité par des méthodes d'analyse en composantes principales (ACP) ou de régression sur composantes PLS.
 
+---
+
 ## 5. STRUCTURE DU DÉPÔT
 ```text
 .
@@ -56,3 +64,5 @@ Le modèle linéaire retenu est la régression OLS associée à une sélection p
 │   └── pricing.ipynb                                # Notebook Jupyter comprenant l'intégralité du pipeline
 └── README.md                                        # Documentation du projet
 ```
+
+---
