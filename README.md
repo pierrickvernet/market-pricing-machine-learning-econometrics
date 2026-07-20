@@ -1,37 +1,79 @@
 # Modélisation et Prédiction des Prix de Marché : Approches Économétriques et Apprentissage Statistique
 
-Ce projet a été réalisé dans le cadre de mon Master 1 IREF pour le module d'Économétrie des big data. L'objectif principal est d'analyser un jeu de données financières de 25 000 observations et d'évaluer de manière comparative la pertinence de modèles économétriques linéaires classiques et d'algorithmes de Machine Learning pour prédire la variable cible `market_price`.
+1. INTRODUCTION
+- Cadre de réalisation : Projet réalisé dans le cadre de mon Master 1 IREF pour le module d'Économétrie des Big Data.
+- Présentation du sujet : L'objectif de cette étude est de modéliser et de prédire la variable financière `market_price` en évaluant de manière comparative des méthodes économétriques linéaires standards et des algorithmes de Machine Learning non linéaires.
+- Cas d'usage : Évaluation d'actifs, tarification financière et aide à la décision quantitativiste à travers la recherche d'un compromis optimal entre puissance prédictive, parcimonie et explicabilité des variables explicatives.
 
-## 📌 Structure de la Démarche
+2. SOURCES ET DONNÉES
+- Périmètre : Dataset financier comprenant 25 000 observations.
+- Variable cible : `market_price` (variable continue représentant la valorisation financière ou le prix de marché).
+- Variables explicatives : Ensemble de variables financières numériques et catégorielles reflétant le niveau de risque, la rentabilité opérationnelle, le secteur d'activité et la notation financière (credit rating).
 
-Le projet est structuré au sein d'un unique notebook Jupyter `pricing.ipynb` découpé en plusieurs phases méthodologiques :
+3. MÉTHODOLOGIE ET DÉTAILS TECHNIQUES
+- Traitement des données et Feature Engineering :
+  - Analyse quantitative des valeurs manquantes. Le rejet de la méthode d'élimination systématique (*Listwise Deletion*) s'est imposé, celle-ci entraînant la perte de 92 % des observations.
+  - Imputation par la médiane pour les variables numériques continuent et par le mode pour les variables catégorielles.
+  - Encodage des variables qualitatives par création de variables muettes (*Dummification* / One-Hot Encoding).
+  - Normalisation des données via `StandardScaler` pour les algorithmes sensibles aux distances.
+- Économétrie et Modélisation :
+  - Estimation d'une régression linéaire multiple par les Moindres Carrés Ordinaires (MCO / OLS) à des fins d'interprétation économique des coefficients (mesure des impacts du risque, de la rentabilité et des primes sectorielles).
+  - Algorithmes de sélection de variables et réduction de dimension : *Forward Selection*, *Backward Selection* et régularisation L1 (*Lasso CV*) afin d'optimiser la parcimonie et de traiter la multicolinéarité.
+- Machine Learning et Optimisation :
+  - Séparation du jeu de données en un échantillon d'entraînement (80 %) et un échantillon de test indépendant (20 %).
+  - Optimisation des hyperparamètres par recherche sur grille avec validation croisée à 10 blocs (*10-Fold Cross-Validation* via `GridSearchCV`).
+  - Algorithmes évalués : Régressur des K plus proches voisins (*KNN Regressor*) et Arbre de décision pour la régression (*Decision Tree Regressor*).
+- Stack Technologique :
+  - Langage : Python 3
+  - Traitement de données : `pandas`, `numpy`
+  - Modélisation Économétrique : `statsmodels`
+  - Machine Learning & Preprocessing : `scikit-learn` (`train_test_split`, `StandardScaler`, `SimpleImputer`, `GridSearchCV`, `LassoCV`, `KNeighborsRegressor`, `DecisionTreeRegressor`)
+  - Visualisation : `matplotlib`, `seaborn`
 
-1. **Analyse Descriptive :** Exploration de la structure des données, visualisation de la distribution de la variable dépendante et analyse quantitative des données manquantes.
-2. **Préparation des Données :** Évaluation des stratégies de traitement des valeurs manquantes (exclusion par *Listwise Deletion* rejetée car éliminant 92 % des lignes, choix final d'une imputation par la médiane pour les variables numériques et le mode pour les qualitatives) et encodage des variables catégorielles via la création de variables muettes (*Dummification*).
-3. **Modélisation Économétrique :** Estimation d'une régression linéaire par les Moindres Carrés Ordinaires (OLS) et interprétation économique des coefficients (impact majeur du risque, de la rentabilité opérationnelle, et primes sectorielles/notations).
-4. **Sélection de Variables :** Implémentation et comparaison d'algorithmes de réduction de dimensionnalité pour limiter la multicolinéarité et améliorer la parcimonie :
-   * Forward Selection
-   * Backward Selection
-   * Lasso 
-5. **Apprentissage Statistique (Machine Learning) :** Entraînement et optimisation d'hyperparamètres par validation croisée à 10 blocs (*10-fold Cross-Validation*) :
-   * Algorithme des K plus proches voisins (*KNN Regressor*)
-   * Arbre de décision de régression (*Decision Tree*)
-6. **Discussion Finale :** Évaluation comparative des performances sur un échantillon de test indépendant (80% Train / 20% Test) et choix du modèle optimal.
+4. CONCLUSION ET RÉSULTATS CLÉS
+- Évaluation des performances sur l'échantillon de test (Métriques : $R^2$, RMSE, MAE) :
+  - Régression Linéaire (OLS post-sélection Backward) : $R^2 \approx 0,71$. Le modèle conserve 16 variables explicatives clés, élimine la multicolinéarité (baisse marquée du *Condition Number*) et offre une interprétabilité économique intégrale des coefficients.
+  - Arbre de Décision (Profondeur optimale = 5) : $R^2 \approx 0,71$. Capture efficacement les structures non linéaires tout en égalant les performances de la régression linéaire.
+  - K-Nearest Neighbors (K = 25) : $R^2 \approx 0,36$. Performance nettement inférieure, illustrant la faible efficacité des métriques de distance géométrique dans un espace à forte dimensionnalité comportant de nombreuses variables muettes.
+- Modèle Retenu : Le modèle linéaire retenu est la régression OLS associée à une sélection pas à pas *Backward*. Ce choix garantit un pouvoir prédictif maximal, une grande sobriété paramétrique et une explicabilité économique indispensable en ingénierie financière.
+- Limites et Perspectives :
+  - Tester des architectures d'apprentissage d'ensemble (*Random Forest*, *XGBoost*, *LightGBM*) pour vérifier la présence d'interactions complexes non capturées par l'arbre simple.
+  - Approfondir le traitement de la dimensionnalité par des méthodes d'analyse en composantes principales (ACP) ou de régression sur composantes PLS.
 
-## 📊 Synthèse des Résultats et Performances
+5. STRUCTURE DU DÉPÔT
+```text
+.
+├── data/
+│   └── market_data.csv        # Jeu de données financier (25 000 observations)
+├── notebooks/
+│   └── pricing.ipynb          # Notebook central contenant l'ensemble du pipeline
+├── src/
+│   ├── preprocessing.py       # Fonctions d'imputation et d'encodage
+│   ├── econometrics.py        # Fonctions d'estimation OLS et sélection (Backward/Forward/Lasso)
+│   └── evaluation.py          # Fonctions d'évaluation des métriques (R², RMSE, MAE)
+├── requirements.txt           # Dépendances Python du projet
+└── README.md                  # Documentation du projet
+```
 
-Chaque modèle a été évalué sur l'échantillon de test à l'aide de trois métriques clés : le coefficient de détermination ($R^2$), la racine de l'erreur quadratique moyenne (RMSE) et l'erreur absolue moyenne (MAE).
-
-* **Régression Linéaire (OLS post-sélection pas à pas) :** Obtenant un $R^2$ d'environ **0,71**, le modèle linéaire est extrêmement robuste. La procédure de sélection a permis de réduire l'espace à 16 variables clés tout en éliminant la multicolinéarité (chute drastique du *Condition Number*).
-* **Arbre de Décision (Profondeur optimale = 5) :** Propose des performances très proches du modèle linéaire ($R^2 \approx 0,71$), prouvant la stabilité de la structure des données.
-* **K plus proches voisins (KNN avec K = 25) :** Présente des performances nettement inférieures ($R^2 \approx 0,36$), montrant la relative inefficacité de l'approche par distance sur ce type d'espace géométrique dummifié.
-
-Le modèle de **régression linéaire avec sélection Backward** est retenu comme optimal car il allie un pouvoir prédictif maximal, une grande parcimonie et surtout une parfaite interprétabilité économique des coefficients.
-
-## 🛠️ Technologies et Librairies Utilisées
-
-Le projet est codé en **Python 3** et s'appuie sur l'écosystème scientifique standard :
-* **Manipulation de données :** `pandas`, `numpy`
-* **Visualisation graphique :** `matplotlib`, `seaborn`
-* **Modélisation économétrique :** `statsmodels`
-* **Machine Learning & Préprocessing :** `scikit-learn` (`train_test_split`, `StandardScaler`, `SimpleImputer`, `GridSearchCV`, `LassoCV`, `KNeighborsRegressor`, `DecisionTreeRegressor`)
+6. INSTALLATION ET REPRODUCTION
+- Prérequis : Python 3.8 ou supérieur installé sur votre système.
+- Étape 1 : Cloner le dépôt GitHub
+```bash
+git clone [https://github.com/votre-utilisateur/projet-econometrie-pricing.git](https://github.com/votre-utilisateur/projet-econometrie-pricing.git)
+cd projet-econometrie-pricing
+```
+- Étape 2 : Créer et activer un environnement virtuel
+```bash
+python -m venv venv
+source venv/bin/activate  # Sur Linux/macOS
+# venv\Scripts\activate   # Sur Windows
+```
+- Étape 3 : Installer les dépendances requises
+```bash
+pip install -r requirements.txt
+```
+- Étape 4 : Exécuter l'analyse
+Lancer Jupyter Notebook ou Jupyter Lab pour exécuter le traitement complet :
+```bash
+jupyter lab notebooks/pricing.ipynb
+```
