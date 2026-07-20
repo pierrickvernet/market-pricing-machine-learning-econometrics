@@ -44,15 +44,10 @@
 ```text
 .
 ├── data/
-│   └── market_data.csv        # Jeu de données financier (25 000 observations)
-├── notebooks/
-│   └── pricing.ipynb          # Notebook central contenant l'ensemble du pipeline
-├── src/
-│   ├── preprocessing.py       # Fonctions d'imputation et d'encodage
-│   ├── econometrics.py        # Fonctions d'estimation OLS et sélection (Backward/Forward/Lasso)
-│   └── evaluation.py          # Fonctions d'évaluation des métriques (R², RMSE, MAE)
-├── requirements.txt           # Dépendances Python du projet
-└── README.md                  # Documentation du projet
+│   └── finance_dataset_25000_with_qualitative.csv   # Jeu de données financier (25 000 observations)
+├── notebook/
+│   └── pricing.ipynb                                # Notebook Jupyter comprenant l'intégralité du pipeline
+└── README.md                                        # Documentation du projet
 ```
 
 ## 6. INSTALLATION ET REPRODUCTION
