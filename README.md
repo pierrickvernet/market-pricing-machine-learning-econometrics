@@ -56,11 +56,13 @@ Le modèle linéaire retenu est la régression OLS associée à une sélection p
 ---
 
 ## 5. STRUCTURE DU DÉPÔT
+
 ```text
 .
-├── finance_dataset_25000_with_qualitative.csv   # Jeu de données financier (25 000 observations)
-├── pricing.ipynb                                # Notebook Jupyter comprenant l'intégralité du pipeline
-└── README.md                                    # Documentation du projet
+├── README.md                                      # Documentation du projet
+├── finance_dataset_25000_with_qualitative.csv     # Jeu de données financier (25 000 observations)
+└── pricing.ipynb                                  # Notebook Jupyter comprenant l'intégralité du pipeline
+                                 
 ```
 
 ---
